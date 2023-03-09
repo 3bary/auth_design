@@ -1,9 +1,8 @@
 import 'package:auth_design/constants.dart';
 import 'package:auth_design/core/utils/assets.dart';
-import 'package:auth_design/core/widgets/custom_button.dart';
 import 'package:auth_design/core/widgets/custom_button_icon.dart';
-import 'package:auth_design/core/widgets/custom_text_form_field.dart';
 import 'package:auth_design/features/auth/views/widgets/arrow_back_button.dart';
+import 'package:auth_design/features/auth/views/widgets/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -37,35 +36,7 @@ class LoginViewBody extends StatelessWidget {
                   color: Color(0xff879EA4)),
             ),
             const SizedBox(height: 36),
-            const CustomTextFormField(
-              icon: FontAwesomeIcons.user,
-              hintText: 'Email or username',
-              isPassword: false,
-            ),
-            const SizedBox(height: 24),
-            const CustomTextFormField(
-              icon: Icons.lock_outlined,
-              hintText: 'Password',
-              isPassword: true,
-            ),
-            const SizedBox(height: 16),
-            const Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                'Forgot password?',
-                style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400),
-              ),
-            ),
-            const SizedBox(height: 24),
-            const CustomButton(
-              text: 'Log in',
-              backgroundColor: kSecondaryColor,
-              textColor: kPrimaryColor,
-              onPressed: null,
-            ),
+            const LoginForm(),
             const SizedBox(height: 16),
             const CustomButtonIcon(
               text: 'Log in using Apple',

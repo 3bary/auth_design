@@ -5,12 +5,13 @@ class CustomTextFormField extends StatefulWidget {
       {Key? key,
       required this.icon,
       required this.hintText,
-      required this.isPassword})
+      required this.isPassword, this.validator, this.onChanged})
       : super(key: key);
   final IconData icon;
   final String hintText;
   final bool isPassword;
-
+  final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
@@ -20,6 +21,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget build(BuildContext context) {
     bool obscurePassword = widget.isPassword ? true : false;
     return TextFormField(
+      onChanged: widget.onChanged,
+      validator: widget.validator,
       obscureText: obscurePassword,
       style: const TextStyle(
           color: Color(0xff1F5460), fontSize: 16, fontWeight: FontWeight.w400),

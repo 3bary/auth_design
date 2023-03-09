@@ -1,8 +1,7 @@
 import 'package:auth_design/constants.dart';
 import 'package:auth_design/core/utils/assets.dart';
-import 'package:auth_design/core/widgets/custom_button.dart';
 import 'package:auth_design/core/widgets/custom_button_icon.dart';
-import 'package:auth_design/core/widgets/custom_text_form_field.dart';
+import 'package:auth_design/features/auth/views/widgets/signup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -38,36 +37,7 @@ class SignupViewBody extends StatelessWidget {
                   color: Color(0xff879EA4)),
             ),
             const SizedBox(height: 36),
-            const CustomTextFormField(
-              icon: FontAwesomeIcons.user,
-              hintText: 'Username',
-              isPassword: false,
-            ),
-            const SizedBox(height: 24),
-            const CustomTextFormField(
-              icon: FontAwesomeIcons.envelopeOpen,
-              hintText: 'Email address',
-              isPassword: false,
-            ),
-            const SizedBox(height: 24),
-            const CustomTextFormField(
-              icon: Icons.lock_outlined,
-              hintText: 'Password',
-              isPassword: true,
-            ),
-            const SizedBox(height: 24),
-            const CustomTextFormField(
-              icon: Icons.lock_outlined,
-              hintText: 'Confirm password',
-              isPassword: true,
-            ),
-            const SizedBox(height: 24),
-            const CustomButton(
-              text: 'Sign up',
-              backgroundColor: kSecondaryColor,
-              textColor: kPrimaryColor,
-              onPressed: null,
-            ),
+            const SignupForm(),
             const SizedBox(height: 16),
             const CustomButtonIcon(
               text: 'Sign up using Apple',
