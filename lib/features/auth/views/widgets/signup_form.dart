@@ -13,6 +13,8 @@ class SignupForm extends StatefulWidget {
 
 class _SignupFormState extends State<SignupForm> {
   GlobalKey<FormState> formKey = GlobalKey();
+  bool obscurePassword1 = true;
+  bool obscurePassword2 = true;
   String? password;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class _SignupFormState extends State<SignupForm> {
               },
               icon: FontAwesomeIcons.user,
               hintText: 'Username',
-              isPassword: false,
+              obscureText: false,
             ),
             const SizedBox(height: 24),
             CustomTextFormField(
@@ -41,7 +43,7 @@ class _SignupFormState extends State<SignupForm> {
               },
               icon: FontAwesomeIcons.envelopeOpen,
               hintText: 'Email address',
-              isPassword: false,
+              obscureText: false,
             ),
             const SizedBox(height: 24),
             CustomTextFormField(
@@ -56,7 +58,18 @@ class _SignupFormState extends State<SignupForm> {
               },
               icon: Icons.lock_outlined,
               hintText: 'Password',
-              isPassword: true,
+              obscureText: obscurePassword1,
+              suffixIcon: IconButton(
+                onPressed:(){
+                  setState(() {
+                    obscurePassword1 = !obscurePassword1;
+                  });
+                },
+                icon: const Icon(
+                  Icons.remove_red_eye_outlined,
+                  color: Color(0xff96A7AF),
+                ),
+              ),
             ),
             const SizedBox(height: 24),
              CustomTextFormField(
@@ -68,7 +81,18 @@ class _SignupFormState extends State<SignupForm> {
                 },
               icon: Icons.lock_outlined,
               hintText: 'Confirm password',
-              isPassword: true,
+               obscureText: obscurePassword2,
+               suffixIcon: IconButton(
+                 onPressed:(){
+                   setState(() {
+                     obscurePassword2 = !obscurePassword2;
+                   });
+                 },
+                 icon: const Icon(
+                   Icons.remove_red_eye_outlined,
+                   color: Color(0xff96A7AF),
+                 ),
+               ),
             ),
             const SizedBox(height: 24),
             CustomButton(

@@ -13,6 +13,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   GlobalKey<FormState> formKey = GlobalKey();
+  bool obscurePassword = true;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -28,7 +29,7 @@ class _LoginFormState extends State<LoginForm> {
             },
             icon: FontAwesomeIcons.user,
             hintText: 'Email or username',
-            isPassword: false,
+            obscureText: false,
           ),
           const SizedBox(height: 24),
           CustomTextFormField(
@@ -40,7 +41,18 @@ class _LoginFormState extends State<LoginForm> {
             },
             icon: Icons.lock_outlined,
             hintText: 'Password',
-            isPassword: true,
+            obscureText: obscurePassword,
+            suffixIcon: IconButton(
+              onPressed:(){
+                setState(() {
+                  obscurePassword = !obscurePassword;
+                });
+              },
+              icon: const Icon(
+                Icons.remove_red_eye_outlined,
+                color: Color(0xff96A7AF),
+              ),
+            ),
           ),
           const SizedBox(height: 16),
           const Align(

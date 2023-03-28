@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField(
-      {Key? key,
-      required this.icon,
-      required this.hintText,
-      required this.isPassword, this.validator, this.onChanged})
-      : super(key: key);
+  const CustomTextFormField({
+    Key? key,
+    required this.icon,
+    required this.hintText,
+    this.validator,
+    this.onChanged, required this.obscureText, this.suffixIcon,
+  }) : super(key: key);
   final IconData icon;
   final String hintText;
-  final bool isPassword;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
+  final bool obscureText;
+  final Widget? suffixIcon;
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
+
+
+
   @override
   Widget build(BuildContext context) {
-    bool obscurePassword = widget.isPassword ? true : false;
+
     return TextFormField(
       onChanged: widget.onChanged,
       validator: widget.validator,
-      obscureText: obscurePassword,
+      obscureText: widget.obscureText,
       style: const TextStyle(
           color: Color(0xff1F5460), fontSize: 16, fontWeight: FontWeight.w400),
       cursorColor: const Color(0xff879EA4),
@@ -36,17 +41,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             widget.icon,
             color: const Color(0xff96A7AF),
           ),
-          suffixIcon: widget.isPassword
-              ? IconButton(
-            onPressed: () {
-              setState(() {
-                obscurePassword = !obscurePassword;
-              });
-            },
-            icon: const Icon(Icons.remove_red_eye_outlined,color: Color(0xff96A7AF),),
-          )
-              : null
-              ),
+          suffixIcon: widget.suffixIcon,
+      ),
     );
   }
 
